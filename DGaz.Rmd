@@ -29,5 +29,8 @@ p <- p + ylab("Pupa Weights (g)") + xlab("Treatment") #rename y-axis title
 p <- p + scale_fill_manual(values = c(Grass = "#a9dd9a", Hay = "lightyellow"))
 p  #show me the graph
 ```
-
-
+```{r 6, include=TRUE}
+results_aov <- aov(pupa_weight_new$PWeight ~ pupa_weight_new$X, data= pupa_weight_new, var.equal=TRUE)
+summary(results_aov)
+TukeyHSD(results_aov)
+```
