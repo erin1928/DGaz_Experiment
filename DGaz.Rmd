@@ -1,0 +1,26 @@
+---
+title: "DGaz"
+author: "Erin Anderson"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+Pupa_Weight <- read.csv("Pupa.csv")
+Pupa_Weight <- na.omit(Pupa_Weight)
+```
+
+```{r 1, include=FALSE}
+Treatment <- Pupa_Weight$Treatment
+Dung_Type <- Pupa_Weight$Dung_Type
+Weight <- Pupa_Weight$Pupa_Weight
+```
+
+```{r 2, include=FALSE}
+library(ggplot2)
+p <- ggplot(data = Pupa_Weight, aes(x = Treatment, y = Pupa_Weight))  #define the variables
+p <- p + geom_boxplot()  #graph them in a boxplot
+p <- p + theme(axis.text.x = element_text(angle = 90))  #put x-axis names at 90deg
+p <- p + ylab("Pupa Weights")  #rename y-axis title
+p  #show me the graph
+```
