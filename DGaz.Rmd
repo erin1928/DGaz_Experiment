@@ -5,22 +5,29 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-Pupa_Weight <- read.csv("Pupa.csv")
-Pupa_Weight <- na.omit(Pupa_Weight)
+
+```{r 3, include=FALSE}
+pupa_weight_new <- read.csv("raw_pupaweight - Sheet1.csv")
+pupa_weight_new
+pupa_weight_new <- na.omit(pupa_weight_new)
 ```
 
-```{r 1, include=FALSE}
-Treatment <- Pupa_Weight$Treatment
-Dung_Type <- Pupa_Weight$Dung_Type
-Weight <- Pupa_Weight$Pupa_Weight
+ 
+```{r 4, include=FALSE}
+treatment1 <- pupa_weight_new$Treatment
+dung <- pupa_weight_new$Dung
+treatment_dung <- pupa_weight_new$X
+weight <- pupa_weight_new$PWeight
 ```
 
-```{r 2, include=FALSE}
+```{r 5, include=TRUE}
 library(ggplot2)
-p <- ggplot(data = Pupa_Weight, aes(x = Treatment, y = Pupa_Weight))  #define the variables
+p <- ggplot(data = pupa_weight_new, aes(x = Treatment, y = PWeight, fill = Dung))  #define the variables
 p <- p + geom_boxplot()  #graph them in a boxplot
 p <- p + theme(axis.text.x = element_text(angle = 90))  #put x-axis names at 90deg
-p <- p + ylab("Pupa Weights")  #rename y-axis title
+p <- p + ylab("Pupa Weights") + xlab("Treatment") #rename y-axis title
+p <- p + scale_fill_manual(values = c(Grass = "#a9dd9a", Hay = "lightyellow"))
 p  #show me the graph
 ```
+
+
