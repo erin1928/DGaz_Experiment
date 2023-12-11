@@ -25,7 +25,7 @@ library(ggplot2)
 p <- ggplot(data = pupa_weight_new, aes(x = Treatment, y = PWeight, fill = Dung))  #define the variables
 p <- p + geom_boxplot()  #graph them in a boxplot
 p <- p + theme(axis.text.x = element_text(angle = 90))  #put x-axis names at 90deg
-p <- p + ylab("Pupa Weights") + xlab("Treatment") #rename y-axis title
+p <- p + ylab("Pupa Weights (g)") + xlab("Treatment") #rename y-axis title
 p <- p + scale_fill_manual(values = c(Grass = "#a9dd9a", Hay = "lightyellow"))
 p  #show me the graph
 ```
